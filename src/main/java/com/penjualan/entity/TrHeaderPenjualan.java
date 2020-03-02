@@ -1,6 +1,8 @@
 package com.penjualan.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.*;
 
 
@@ -31,7 +33,7 @@ public class TrHeaderPenjualan implements Serializable {
 	private String kodeKaryawan;
 
 	@Column(name="TANGGAL_TRANSAKSI")
-	private Object tanggalTransaksi;
+	private Date tanggalTransaksi;
 
 	public TrHeaderPenjualan() {
 	}
@@ -76,11 +78,11 @@ public class TrHeaderPenjualan implements Serializable {
 		this.kodeKaryawan = kodeKaryawan;
 	}
 
-	public Object getTanggalTransaksi() {
+	public Date getTanggalTransaksi() {
 		return this.tanggalTransaksi;
 	}
 
-	public void setTanggalTransaksi(Object tanggalTransaksi) {
+	public void setTanggalTransaksi(Date tanggalTransaksi) {
 		this.tanggalTransaksi = tanggalTransaksi;
 	}
 
