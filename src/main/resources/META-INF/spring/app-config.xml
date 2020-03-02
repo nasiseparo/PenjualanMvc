@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<context:component-scan
-		base-package="com.mvc.dao, com.mvc.service" />
+		base-package="com.penjualan.dao, com.penjualan.service" />
 
 	<bean id="property"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -25,10 +25,10 @@
 	<bean id="emFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="persistenceUnitName" value="mvcpu" />
+		<property name="persistenceUnitName" value="penjualan" />
 		<property name="packagesToScan">
 			<list>
-				<value>com.mvc.entity</value>
+				<value>com.penjualan.entity</value>
 			</list>
 		</property>
 		<property name="jpaVendorAdapter">
@@ -66,5 +66,5 @@
 		transaction-manager="txManager" />
 
 	<jpa:repositories transaction-manager-ref="txManager"
-		base-package="com.mvc.dao" entity-manager-factory-ref="emFactory" />
+		base-package="com.penjualan.dao" entity-manager-factory-ref="emFactory" />
 </beans>
