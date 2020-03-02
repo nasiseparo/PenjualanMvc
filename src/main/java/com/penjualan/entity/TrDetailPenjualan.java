@@ -3,6 +3,8 @@ package com.penjualan.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.penjualan.entity.primarykey.TrDetailPenjualanPrimaryKey;
+
 
 /**
  * The persistent class for the TR_DETAIL_PENJUALAN database table.
@@ -10,6 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="TR_DETAIL_PENJUALAN")
+@IdClass(TrDetailPenjualanPrimaryKey.class)
 @NamedQuery(name="TrDetailPenjualan.findAll", query="SELECT t FROM TrDetailPenjualan t")
 public class TrDetailPenjualan implements Serializable {
 	private static final long serialVersionUID = 1L;
