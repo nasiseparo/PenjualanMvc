@@ -18,7 +18,7 @@
         <property name="suffix" value=".jsp" />
     </bean>
     
-    <mvc:resources mapping="/resources/**" location="/resources/default-theme/" />
+    <mvc:resources mapping="/resources/**" location="/resources/admin-lte/" />
     
     <mvc:annotation-driven />
     
