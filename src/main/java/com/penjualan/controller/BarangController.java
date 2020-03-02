@@ -63,6 +63,7 @@ public class BarangController {
 			model.addAttribute("kodeCustomer", customerDto.getKodeCustomer());
 			model.addAttribute("namaCustomer", customerDto.getNamaCustomer());
 			model.addAttribute("alamatCustomer", customerDto.getAlamatCustomer());
+			model.addAttribute("jenisKelamin", customerDto.getJenisKelamin());
 			model.addAttribute("emailCustomer", customerDto.getEmailCustomer());
 			model.addAttribute("kodeKota", customerDto.getKodeKota());
 			return "customerEdit";
