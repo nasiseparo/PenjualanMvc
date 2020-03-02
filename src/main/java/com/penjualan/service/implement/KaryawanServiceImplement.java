@@ -94,7 +94,7 @@ public class KaryawanServiceImplement implements KaryawanService {
 		// TODO Auto-generated method stub
 //		MahasiswaPrimaryKey pk = new MahasiswaPrimaryKey();
 //		pk.setNim(nim);
-		MstKaryawan kar = (MstKaryawan) dao.findKaryawanByUsername(username);
+		MstKaryawan kar = dao.findKaryawanByUsername(username);
 		if (kar != null) {
 			KaryawanDto dto = new KaryawanDto();
 			dto.setKodeKaryawan(kar.getKodeKaryawan());
