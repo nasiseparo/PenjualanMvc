@@ -16,7 +16,6 @@
 <body>
 <div class="container fluid-container">
 <input type="button" value="Menu Karyawan" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/karyawan';">
-<input type="button" value="Menu Karyawan" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/karyawan';">
 </div>
 <script src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
 </body>
