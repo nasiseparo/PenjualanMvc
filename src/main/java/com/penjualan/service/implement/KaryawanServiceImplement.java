@@ -56,8 +56,8 @@ public class KaryawanServiceImplement implements KaryawanService {
 		
 		MstKaryawan kar = dao.findOne(pk);
 		kar.setKodeKaryawan(dto.getKodeKaryawan());
-		kar.setNamaKaryawan(kar.getNamaKaryawan());
-		kar.setPassword(kar.getPassword());
+		kar.setNamaKaryawan(dto.getNamaKaryawan());
+		kar.setPassword(dto.getPassword());
 		kar.setUsername(dto.getUsername());
 		dao.save(kar);
 	}

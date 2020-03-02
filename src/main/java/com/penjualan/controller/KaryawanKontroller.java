@@ -31,4 +31,11 @@ public class KaryawanKontroller {
 		model.addAttribute("listKaryawan", dtos);
 		return "list_karyawan";
 	}
+	
+	@RequestMapping("/karyawan/add")
+	public String add(Model model) {
+		KaryawanDto dto = new KaryawanDto();
+		model.addAttribute("dto", dto);
+		return "addpenduduk";
+	}
 }
