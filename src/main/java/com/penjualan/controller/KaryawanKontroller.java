@@ -23,9 +23,9 @@ public class KaryawanKontroller {
 	@RequestMapping(value="/karyawan", method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-//		if(session.getAttribute("OK") == null){
-//			return "redirect:/login";
-//		}
+		if(session.getAttribute("OK") == null){
+			return "redirect:/login";
+		}
 		
 		List<KaryawanDto> dtos = svc.listAll();
 		model.addAttribute("listKaryawan", dtos);
