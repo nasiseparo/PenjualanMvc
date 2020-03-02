@@ -52,7 +52,7 @@
 		<property name="driverClassName"
 			value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 		<property name="url"
-			value="jdbc:sqlserver://localhost;databaseName=db_penduduk" />
+			value="jdbc:sqlserver://localhost;databaseName=PenjualanMvc" />
 		<property name="username" value="sa" />
 		<property name="password" value="1sampai8" />
 	</bean>
