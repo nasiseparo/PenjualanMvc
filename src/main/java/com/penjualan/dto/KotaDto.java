@@ -1,7 +1,5 @@
 package com.penjualan.dto;
 
-import javax.persistence.Column;
-
 public class KotaDto {
 	private String kodeKota;
 	private String kodeProvinsi;
