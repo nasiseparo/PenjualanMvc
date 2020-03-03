@@ -23,8 +23,6 @@ import com.penjualan.service.BarangService;
 public class BarangController {
 	@Autowired
 	BarangService svc;
-
-<<<<<<< HEAD
 	@RequestMapping(value="/barang", method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -49,8 +47,6 @@ public class BarangController {
 		BarangDto dto = svc.getBarangById(kodeBarang);
 		model.addAttribute("dto", dto);
 		return "edit_barang";
-=======
-		return "add";
 	}
 	@RequestMapping("/edit")
 	public String Edit(Model model) {
@@ -61,12 +57,6 @@ public class BarangController {
 	public String List(Model model) {
 		
 		return "list_transaction";
->>>>>>> origin/backend
-	}
-	@RequestMapping("/login")
-	public String Login(Model model) {
-		
-		return "login";
 	}
 	
 	@RequestMapping("/barang/save")
@@ -78,20 +68,10 @@ public class BarangController {
 			return "redirect:/barang";
 		}
 	}
+	
 	@RequestMapping("/barang/delete/{kodebarang}")
 	public String delete(@PathVariable("kodebarang") String kodeBarang) {
 		svc.delete(kodeBarang);
 		return "redirect:/barang";
 	}
-<<<<<<< HEAD
-	
-	
-=======
-	@RequestMapping("/list_detail")
-	public String Detail(Model model) {
-		
-		return "list_detail";
-	}
-
->>>>>>> origin/backend
 }
