@@ -69,7 +69,7 @@ public class MstCustomerController {
 		}
 	}
 
-	@RequestMapping(value = "/delete/{kode}")
+	@RequestMapping(value = "/deletecustomer/{kode}")
 	public String delete(@PathVariable("kode") String kode, Model model) {
 		if (kode != null) {
 			CustomerSvc.delete(kode);

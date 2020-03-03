@@ -65,7 +65,7 @@ public class MstProvinsiController {
 		}
 	}
 
-	@RequestMapping(value = "/delete/{kode}")
+	@RequestMapping(value = "/deleteprovinsi/{kode}")
 	public String deleteProvinsi(@PathVariable("kode") String kode, Model model) {
 		if (kode != null) {
 			ProvinsiSvc.delete(kode);
