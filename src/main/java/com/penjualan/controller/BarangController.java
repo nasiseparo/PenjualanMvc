@@ -1,37 +1,9 @@
 package com.penjualan.controller;
 
-<<<<<<< HEAD
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-@Controller
-public class BarangController {
-	
-	@RequestMapping("/add")
-	public String Add(Model model) {
-
-		return "add_transaction";
-	}
-	
-	@RequestMapping("/list")
-	public String List(Model model) {
-		
-		return "list_transaction";
-	}
-	
-	@RequestMapping("/update")
-	public String Update(Model model) {
-		
-		return "update_transaction";
-	}
-	@RequestMapping("/home")
-	public String Home(Model model) {
-		
-		return "home";
-	}
-=======
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,12 +11,9 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.penjualan.dto.BarangDto;
@@ -54,7 +23,6 @@ import com.penjualan.service.BarangService;
 public class BarangController {
 	@Autowired
 	BarangService svc;
-
 	@RequestMapping(value="/barang", method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -73,14 +41,22 @@ public class BarangController {
 		model.addAttribute("dto", dto);
 		return "add_barang";
 	}
-	
->>>>>>> hendrik
 
 	@RequestMapping("/barang/edit/{kodebarang}")
 	public String detail(@PathVariable("kodebarang") String kodeBarang, Model model) {
 		BarangDto dto = svc.getBarangById(kodeBarang);
 		model.addAttribute("dto", dto);
 		return "edit_barang";
+	}
+	@RequestMapping("/edit")
+	public String Edit(Model model) {
+		
+		return "edit";
+	}
+	@RequestMapping("/list")
+	public String List(Model model) {
+		
+		return "list_transaction";
 	}
 	
 	@RequestMapping("/barang/save")
@@ -92,11 +68,10 @@ public class BarangController {
 			return "redirect:/barang";
 		}
 	}
+	
 	@RequestMapping("/barang/delete/{kodebarang}")
 	public String delete(@PathVariable("kodebarang") String kodeBarang) {
 		svc.delete(kodeBarang);
 		return "redirect:/barang";
 	}
-	
-	
 }

@@ -1,90 +1,49 @@
-package com.penjualan.entity;
+package com.penjualan.dto;
 
-import java.io.Serializable;
-import javax.persistence.*;
-
-import com.penjualan.entity.primarykey.MstSupplierPrimaryKey;
-
-
-/**
- * The persistent class for the MST_SUPPLIER database table.
- * 
- */
-@Entity
-@Table(name="MST_SUPPLIER")
-@IdClass(MstSupplierPrimaryKey.class)
-@NamedQuery(name="MstSupplier.findAll", query="SELECT m FROM MstSupplier m")
-public class MstSupplier implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@Column(name="KODE_SUPPLIER")
+public class SupplierDto {
 	private String kodeSupplier;
-
-	@Column(name="ALAMAT_SUPPLIER")
 	private String alamatSupplier;
-
-	@Column(name="EMAIL_SUPPLIER")
 	private String emailSupplier;
-
-	@Column(name="KODE_KOTA")
 	private String kodeKota;
-
-	@Column(name="NAMA_SUPPLIER")
 	private String namaSupplier;
-
-	@Column(name="TELP_SUPPLIER")
 	private String telpSupplier;
-
-	public MstSupplier() {
-	}
-
+	
 	public String getKodeSupplier() {
-		return this.kodeSupplier;
+		return kodeSupplier;
 	}
-
 	public void setKodeSupplier(String kodeSupplier) {
 		this.kodeSupplier = kodeSupplier;
 	}
-
 	public String getAlamatSupplier() {
-		return this.alamatSupplier;
+		return alamatSupplier;
 	}
-
 	public void setAlamatSupplier(String alamatSupplier) {
 		this.alamatSupplier = alamatSupplier;
 	}
-
 	public String getEmailSupplier() {
-		return this.emailSupplier;
+		return emailSupplier;
 	}
-
 	public void setEmailSupplier(String emailSupplier) {
 		this.emailSupplier = emailSupplier;
 	}
-
 	public String getKodeKota() {
-		return this.kodeKota;
+		return kodeKota;
 	}
-
 	public void setKodeKota(String kodeKota) {
 		this.kodeKota = kodeKota;
 	}
-
 	public String getNamaSupplier() {
-		return this.namaSupplier;
+		return namaSupplier;
 	}
-
 	public void setNamaSupplier(String namaSupplier) {
 		this.namaSupplier = namaSupplier;
 	}
-
 	public String getTelpSupplier() {
-		return this.telpSupplier;
+		return telpSupplier;
 	}
-
 	public void setTelpSupplier(String telpSupplier) {
 		this.telpSupplier = telpSupplier;
 	}
 
+	
 }

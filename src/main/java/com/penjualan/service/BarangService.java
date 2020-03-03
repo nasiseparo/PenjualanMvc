@@ -3,7 +3,6 @@ package com.penjualan.service;
 import java.util.List;
 
 import com.penjualan.dto.BarangDto;
-import com.penjualan.dto.KaryawanDto;
 
 public interface BarangService {
 	public List<BarangDto> listAll();
