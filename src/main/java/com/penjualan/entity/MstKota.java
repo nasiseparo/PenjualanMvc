@@ -3,6 +3,8 @@ package com.penjualan.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.penjualan.entity.primarykey.MstKotaPrimaryKey;
+
 
 /**
  * The persistent class for the MST_KOTA database table.
@@ -10,6 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="MST_KOTA")
+@IdClass(MstKotaPrimaryKey.class)
 @NamedQuery(name="MstKota.findAll", query="SELECT m FROM MstKota m")
 public class MstKota implements Serializable {
 	private static final long serialVersionUID = 1L;
