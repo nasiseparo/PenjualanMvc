@@ -10,6 +10,6 @@ import com.penjualan.entity.primarykey.MstBarangPrimaryKey;
 
 public interface BarangDao extends JpaRepository<MstBarang, MstBarangPrimaryKey>{
 	@Query("SELECT b FROM MstBarang b " // e adalah index ke-0, d.namaDivisi adalah index ke-1
-			+ "WHERE b.namaBarang = :namabarang")
+			+ "WHERE b.namaBarang LIKE %:namabarang%")
 	public MstBarang findBarangByName(@Param("namabarang") String namaBarang);
 }
