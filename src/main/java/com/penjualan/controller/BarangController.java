@@ -11,13 +11,22 @@ public class BarangController {
 	@RequestMapping("/add")
 	public String Add(Model model) {
 
-		return "add_transaction";
+		return "add";
 	}
-	
+	@RequestMapping("/edit")
+	public String Edit(Model model) {
+		
+		return "edit";
+	}
 	@RequestMapping("/list")
 	public String List(Model model) {
 		
 		return "list_transaction";
+	}
+	@RequestMapping("/login")
+	public String Login(Model model) {
+		
+		return "login";
 	}
 	
 	@RequestMapping("/update")
@@ -29,6 +38,11 @@ public class BarangController {
 	public String Home(Model model) {
 		
 		return "home";
+	}
+	@RequestMapping("/list_detail")
+	public String Detail(Model model) {
+		
+		return "list_detail";
 	}
 
 }
