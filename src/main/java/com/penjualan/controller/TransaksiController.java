@@ -1,5 +1,6 @@
 package com.penjualan.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,12 +53,15 @@ public class TransaksiController {
 	@RequestMapping("/detail/{noNota}")
 	public String detail(Model model,@PathVariable("noNota")String noNota){
 		TrHeaderPenjualanDto list = svc.listTransaksiHeader(noNota);
+	
 		if(list!=null) {
-			List<MstCustomerDto> customer = cSvc.listAll();
+			List<MstCustomerDto> customer = cSvc.listAll();			
 			TrHeaderPenjualanDto headerDto = svc.listTransaksiHeader(noNota);
+			List<BarangDto> dtos = bSvc.listAll();
 			model.addAttribute("headerDto", headerDto);
 			model.addAttribute("pelanggan", customer);
 			model.addAttribute("data", list);
+			model.addAttribute("barang", dtos);
 			return "transaksi_detail";
 		}else {
 			return "redirect:/transaksi/list";

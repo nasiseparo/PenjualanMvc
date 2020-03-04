@@ -20,6 +20,10 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String list(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("sesilogin");
+		session.removeAttribute("kodeKaryawan");
+		session.removeAttribute("OK");
 		KaryawanDto dto = new KaryawanDto();
 		model.addAttribute("karyawanLogin", dto);
 		return "login";
@@ -35,7 +39,7 @@ public class LoginController {
 				session.setAttribute("kodeKaryawan", dto.getKodeKaryawan());
 				session.setAttribute("OK", findUser);
 				
-				return "redirect:/home";
+				return "redirect:/barang/home";
 			} else {
 				model.addAttribute("pesan", "login gagal");
 				return "login";

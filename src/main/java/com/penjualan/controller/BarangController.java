@@ -27,14 +27,30 @@ public class BarangController {
 	BarangService barangSvc;
 
 	@RequestMapping("/add")
-	public String Add(Model model) {
+	public String Add(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("sesilogin")==null&&
+				session.getAttribute("kodeKaryawan")==null&&
+				session.getAttribute("OK")==null){
+	
+			return "redirect:/login";
+		}
+		
 		BarangDto dto = new BarangDto();
 		model.addAttribute("dto", dto);
 		return "add";
 	}
 
 	@RequestMapping(value = "/submitBarang", method = RequestMethod.POST)
-	public String submitForm(@Valid @ModelAttribute("barang") BarangDto dto, BindingResult result, ModelMap model) {
+	public String submitForm(@Valid @ModelAttribute("barang") BarangDto dto, 
+			BindingResult result, ModelMap model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("sesilogin")==null&&
+				session.getAttribute("kodeKaryawan")==null&&
+				session.getAttribute("OK")==null){
+	
+			return "redirect:/login";
+		}
 		if (result.hasErrors()) {
 			return "pendudukadd";
 		} else {
@@ -49,7 +65,15 @@ public class BarangController {
 	}
 
 	@RequestMapping(value = "/edit/{kodeBarang}")
-	public String detail(@PathVariable("kodeBarang") String kodeBarang, Model model) {
+	public String detail(@PathVariable("kodeBarang") String kodeBarang, 
+			Model model,  HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("sesilogin")==null&&
+				session.getAttribute("kodeKaryawan")==null&&
+				session.getAttribute("OK")==null){
+	
+			return "redirect:/login";
+		}
 		BarangDto barangDto = barangSvc.getBarangById(kodeBarang);
 		model.addAttribute("barang", barangDto);	
 		return "edit";
@@ -57,7 +81,14 @@ public class BarangController {
 
 
 	@RequestMapping("/home")
-	public String Home(Model model) {
+	public String Home(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("sesilogin")==null&&
+				session.getAttribute("kodeKaryawan")==null&&
+				session.getAttribute("OK")==null){
+	
+			return "redirect:/login";
+		}
 		List<BarangDto> dtos = barangSvc.listAll();
 		model.addAttribute("barang", dtos);
 		return "home";

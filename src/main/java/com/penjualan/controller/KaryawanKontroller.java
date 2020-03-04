@@ -22,14 +22,28 @@ public class KaryawanKontroller {
 	KaryawanService svc;
 
 	@RequestMapping(value="/list", method = RequestMethod.GET)
-	public String list(Model model) {
+	public String list(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("sesilogin")==null&&
+				session.getAttribute("kodeKaryawan")==null&&
+				session.getAttribute("OK")==null){
+	
+			return "redirect:/login";
+		}
 		List<KaryawanDto> dtos = svc.listAll();
 		model.addAttribute("listKaryawan", dtos);
 		return "list_karyawan";
 	}
 	
 	@RequestMapping("/add")
-	public String add(Model model) {
+	public String add(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("sesilogin")==null&&
+				session.getAttribute("kodeKaryawan")==null&&
+				session.getAttribute("OK")==null){
+	
+			return "redirect:/login";
+		}
 		KaryawanDto dto = new KaryawanDto();
 		model.addAttribute("dto", dto);
 		return "addpenduduk";

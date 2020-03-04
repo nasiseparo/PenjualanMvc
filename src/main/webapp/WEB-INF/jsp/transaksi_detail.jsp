@@ -173,21 +173,29 @@
 					action="${pageContext.request.contextPath}/transaksi/submitDetail"
 					method="post" modelAttribute="detail">
 					<div class="form-group">
-					<input type="text"
-							class="form-control" id="noNota"
-							name="noNota" value="${data.getNoNota()}" hidden>
-							
-						<label for="kodeDetail">Kode Detail</label> <input type="text"
+						<input type="text" class="form-control" id="noNota" name="noNota"
+							value="${data.getNoNota()}" hidden> <label
+							for="kodeDetail">Kode Detail</label> <input type="text"
 							class="form-control" id="kodeDetail" placeholder="Kode Detail"
 							name="kodeDetail">
 					</div>
 
 					<div class="form-group">
+
+						<label for="kodeDetail">Pilih Barang</label>
+						<form:form modelAttribute="barang">
+
+							<form:select path="" class="form-control" id="barangOption">
+								<option value="" >-Pilih Barang-</option>
+
+								<c:forEach items="${barang}" var="k">
+									<option 
+										value="${k.getKodeBarang()}" >${k.getNamaBarang()}</option>
+										
+								</c:forEach>
 						
-							 <label
-							for="kodeBarang">Kode Barang</label> <input type="text"
-							class="form-control" id="kodeBarang" placeholder="Kode Barang"
-							name="kodeBarang">
+						<input type="text" class="form-control" id="kodeBarangValue"
+							 name="kodeBarang" hidden>
 					</div>
 
 					<div class="form-group">
@@ -211,9 +219,11 @@
 					<div class="form-group">
 						<label for="subtotal">Subtotal</label> <input type="text"
 							class="form-control" id="subtotal" placeholder="subtotal"
-							name="subtotal">
+							name="subtotal" readonly>
 					</div>
 					<button type="submit" class="btn btn-primary">Tambah</button>
+						</form:select>
+						</form:form>
 				</form>
 
 			</div>
@@ -224,38 +234,41 @@
 <!-- /.content-wrapper -->
 
 <script type="text/javascript">
-	
-	$(document).ready(function(){
-		$('#qty').keyup(function(e){
+	$(document).ready(function() {
+		$('#qty').keyup(function(e) {
 			var hargaSatuan = $('#hargaSatuan').val();
 			var diskon = $('#diskon').val();
 			var qty = $(this).val();
-			
+
 			var hasil1 = (hargaSatuan * qty);
 			var diskonRP = (hasil1 * diskon) / 100;
-			
+
 			var total = hasil1 - diskonRP;
-			
+
 			console.log("asu")
-			
+
 			$('#subtotal').val(total);
 		})
-		
-		$('#diskon').keyup(function(e){
+
+		$('#diskon').keyup(function(e) {
 			var hargaSatuan = $('#hargaSatuan').val();
 			var qty = $('#qty').val();
 			var diskon = $(this).val();
-			
+
 			var hasil1 = (hargaSatuan * qty);
 			var diskonRP = (hasil1 * diskon) / 100;
-			
+
 			var total = hasil1 - diskonRP;
-			
+
 			$('#subtotal').val(total);
 		})
+		
+		$('#barangOption').on('change', function() {
+			var kodeBarang = $('#barangOption').val();
+			$('#kodeBarangValue').val(kodeBarang);
+		})
 	});
-	
-	</script>
-	
+</script>
+
 
 <%@include file="/WEB-INF/jsp/include/footer.jsp"%>
