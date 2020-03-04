@@ -40,40 +40,34 @@
 							<div class="card-body">
 								<div class="form-group">
 
-									<label for="nota">No Nota</label> <input type="text"
-										class="form-control" id="kodeCustomer"
-										placeholder="Kode Customer" name="kodeCustomer">
+									<label for="noNota">No Nota</label> <input type="text"
+										class="form-control" id="noNota"
+										placeholder="No Nota" name="noNota">
 								</div>
 								
 								<div class="form-group">
 
-									<label for="nota">Nama Customer</label> <input type="text"
-										class="form-control" id="namaCustomer"
-										placeholder="Nama Customer" name="namaCustomer">
+									<label for="tanggalTransaksi">Tanggal Transaksi</label> <input type="text"
+										class="form-control" id="tanggalTransaksi"
+										placeholder="Tanggal Transaksi" name="tanggalTransaksi">
 								</div>
 
 								<div class="form-group">
-									<label for="email">Email</label> <input type="text"
-										class="form-control" id="email" placeholder="Email"
-										name="emailCustomer">
+									<label for="hargaTotal">Harga Total</label> <input type="text"
+										class="form-control" id="hargaTotal" placeholder="Harga Total"
+										name="hargaTotal">
 								</div>
 								<div class="form-group">
-									<label for="jenisKelamin">Jenis Kelamin</label> <input
-										type="text" class="form-control" id="jenisKelamin"
-										placeholder="Jenis Kelamin" name=jenisKelamin>
+									<label for="customer">Customer</label> <input
+										type="text" class="form-control" id="customer"
+										placeholder="Customer" name=customer>
 								</div>
 								<div class="form-group">
-									<label for="alamatCustomer">Alamat Customer</label> <input
-										type="text" class="form-control" id="alamatCustomer"
-										placeholder="Alamat Customer" name="alamatCustomer">
+									<label for="karyawan">Karyawan</label> <input
+										type="text" class="form-control" id="karyawan"
+										placeholder="Karyawan" name="karyawan">
 								</div>
-								<div class="form-group">
-									<label for="kodeKota">Kode Kota</label> <input type="text"
-										class="form-control" id="kodeKota" placeholder="kodeKota"
-										name="kodeKota">
-								</div>
-
-
+								
 							</div>
 							<!-- /.card-body -->
 

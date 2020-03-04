@@ -9,14 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TransaksiController {
 	
 	
-	@RequestMapping("list")
+	@RequestMapping("/list")
 	public String list(Model model) {
 		return "list_transaction";
 	}
 	
-	@RequestMapping("add")
+	@RequestMapping("/add")
 	public String add(Model model) {
-		return "list_transaction";
+		return "transaksi_add";
+	}
+	@RequestMapping("/detail")
+	public String detail(Model model) {
+		return "transaksi_detail";
 	}
 	
 }

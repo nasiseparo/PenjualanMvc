@@ -19,7 +19,52 @@
 		</div>
 		<!-- /.container-fluid -->
 	</section>
+	<section class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="card card-primary">
 
+						<!-- /.card-header -->
+						<!-- form start -->
+						<form role="form">
+							<div class="card-body">
+								<div class="form-group">
+									<label for="noNota">No Nota</label> <input type="email"
+										class="form-control" id="noNota" placeholder="Enter No Nota">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPassword1">Tanggal Transaksi</label> <input
+										type="text" class="form-control" id="tanggalTransaksi"
+										placeholder="Tanggal Transaksi">
+								</div>
+								<div class="form-group">
+									<label for="customer">Customer</label> <input
+										type="text" class="form-control" id="customer"
+										placeholder="Customer"> 
+										
+								</div>
+								<div class="form-group">
+									<label
+										for="karyawan">Karyawan</label> <input
+										type="text" class="form-control" id="karyawan"
+										placeholder="Karyawan">
+										
+								</div>
+
+
+							</div>
+							<!-- /.card-body -->
+
+							<div class="card-footer">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
@@ -68,9 +113,8 @@
 										<td>10000</td>
 										<td>Adi</td>
 										<td>Adi</td>
-										<td><a class="btn btn-warning"
-											href="">Detail</a>&nbsp
-											<a class="btn btn-danger"
+										<td><a class="btn btn-warning" href="">Detail</a>&nbsp <a
+											class="btn btn-danger"
 											href="${pageContext.request.contextPath}">Delete</a></td>
 									</tr>
 

@@ -77,9 +77,9 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><a href="${pageContext.request.contextPath}/barang/home"
+							<li class="nav-item"><a href="${pageContext.request.contextPath}/transaksi/list"
 								class="nav-link"> <i class="far fa-circle nav-icon"></i>
-									<p>Master Barang</p>
+									<p>Transaksi</p>
 							</a></li>
 						
 						</ul></li>
