@@ -11,20 +11,15 @@ import com.penjualan.entity.primarykey.TrHeaderPenjualanPrimaryKey;
 
 public interface TrHeaderPenjualanDao extends JpaRepository<TrHeaderPenjualan, TrHeaderPenjualanPrimaryKey>{
 
-	@Query("select a, b.namaCustomer, c.namaKaryawan from TrHeaderPenjualan a, "
-			+ "MstCustomer b, MstKaryawan c where a.kodeCustomer = b.kodeCustomer "
-			+ "and a.kodeKaryawan = c.kodeKaryawan")
-	//@Query("select a, b.namaDivisi from Karyawan a, Divisi b where a.kodeDivisi = b.kodeDivisi")
-	public List<Object[]> findAllHeaderPenjualan();
+	@Query("select a, b, c from TrHeaderPenjualan a, MstCustomer b, MstKaryawan c where a.kodeCustomer = b.kodeCustomer and a.kodeKaryawan = c.kodeKaryawan")
+	public List<Object[]> listTransaksiHeader();
 	
+	@Query("select a, b, c from TrHeaderPenjualan a, MstCustomer b, MstKaryawan c Where a.kodeCustomer = b.kodeCustomer and a.kodeKaryawan = c.kodeKaryawan and (a.noNota like %:cari% or b.namaCustomer like %:cari% or c.namaKaryawan like %:cari%)")
+	public List<Object[]> listTransaksiHeaderSearch(@Param("cari")String cari);
 	
-	@Query("select a, b.namaCustomer, c.namaKaryawan from TrHeaderPenjualan a, "
-			+ "MstCustomer b, MstKaryawan c where a.kodeCustomer = b.kodeCustomer "
-			+ "and a.kodeKaryawan = c.kodeKaryawan "
-			+ "and (a.noNota like %:cari% "
-			+ "or b.namaCustomer like %:cari% "
-			+ "or c.namaKaryawan like %:cari%)")
-	//@Query("select a, b.namaDivisi from Karyawan a, Divisi b where a.kodeDivisi = b.kodeDivisi")
-	public List<Object[]> SeacrhHeaderPenjualan(@Param("cari")String cari);
+	@Query("select a, b, c from TrHeaderPenjualan a, MstCustomer b, MstKaryawan c where a.kodeCustomer = b.kodeCustomer and a.kodeKaryawan = c.kodeKaryawan and (a.noNota = :noNota)")
+	public List<Object[]> listTransaksiHeader(@Param("noNota")String noNota);
+
+
 	
 }

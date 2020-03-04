@@ -37,6 +37,7 @@ public class TransaksiController {
 		return "list_transaction";
 	}
 	
+	
 	@RequestMapping("/add")
 	public String add(Model model) {
 		return "transaksi_add";

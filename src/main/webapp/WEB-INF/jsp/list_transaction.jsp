@@ -62,18 +62,18 @@
 								</thead>
 								<tbody>
 
-									<tr>
-										<td>B001</td>
-										<td>21/11/1990</td>
-										<td>10000</td>
-										<td>Adi</td>
-										<td>Adi</td>
-										<td><a class="btn btn-warning"
-											href="">Detail</a>&nbsp
-											<a class="btn btn-danger"
-											href="${pageContext.request.contextPath}">Delete</a></td>
-									</tr>
-
+									<c:forEach items="${data}" var="p">
+										<tr>
+											<td>${p.noNota}</td>
+											<td>${p.tanggalTransaksi}</td>
+											<td>${p.hargaTotal}</td>
+											<td>${p.namaCustomer}</td>
+											<td>${p.namaKaryawan}</td>
+											<td><a class="btn btn-warning" href="">Detail</a>&nbsp <a
+												class="btn btn-danger"
+												href="${pageContext.request.contextPath}">Delete</a></td>
+										</tr>
+										</c:forEach>
 								</tbody>
 							</table>
 							<div class="card-footer clearfix">
