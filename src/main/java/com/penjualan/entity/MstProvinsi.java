@@ -3,12 +3,15 @@ package com.penjualan.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.penjualan.entity.primarykey.MstProvinsiPrimaryKey;
+
 
 /**
  * The persistent class for the MST_PROVINSI database table.
  * 
  */
 @Entity
+@IdClass(MstProvinsiPrimaryKey.class)
 @Table(name="MST_PROVINSI")
 @NamedQuery(name="MstProvinsi.findAll", query="SELECT m FROM MstProvinsi m")
 public class MstProvinsi implements Serializable {

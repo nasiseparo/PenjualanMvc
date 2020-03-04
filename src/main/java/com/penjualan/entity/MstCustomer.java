@@ -3,6 +3,8 @@ package com.penjualan.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.penjualan.entity.primarykey.MstCustomerPrimaryKey;
+
 
 /**
  * The persistent class for the MST_CUSTOMER database table.
@@ -10,6 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="MST_CUSTOMER")
+@IdClass(MstCustomerPrimaryKey.class)
 @NamedQuery(name="MstCustomer.findAll", query="SELECT m FROM MstCustomer m")
 public class MstCustomer implements Serializable {
 	private static final long serialVersionUID = 1L;
