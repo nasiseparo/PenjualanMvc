@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.penjualan.dto.BarangDto;
 import com.penjualan.dto.KaryawanDto;
@@ -49,14 +50,19 @@ public class TransaksiController {
 	}
 	
 	@RequestMapping("/detail/{noNota}")
-	public String detail(Model model, HttpServletRequest request, @PathVariable("noNota")String noNota){
+	public String detail(Model model,@PathVariable("noNota")String noNota){
 		TrHeaderPenjualanDto list = svc.listTransaksiHeader(noNota);
-		List<MstCustomerDto> customer = cSvc.listAll();
-		TrHeaderPenjualanDto headerDto = svc.listTransaksiHeader(noNota);
-		model.addAttribute("headerDto", headerDto);
-		model.addAttribute("pelanggan", customer);
-		model.addAttribute("data", list);
-		return "viewTransaksiDetail";
+		if(list!=null) {
+			List<MstCustomerDto> customer = cSvc.listAll();
+			TrHeaderPenjualanDto headerDto = svc.listTransaksiHeader(noNota);
+			model.addAttribute("headerDto", headerDto);
+			model.addAttribute("pelanggan", customer);
+			model.addAttribute("data", list);
+			return "transaksi_detail";
+		}else {
+			return "redirect:/transaksi/list";
+		}
+		
 	}
 
 	@RequestMapping("/header/ubah/proses/{noNota}")
@@ -125,27 +131,51 @@ public class TransaksiController {
 	}
 	
 
-	@RequestMapping("/tambah")
-	public String addHeader(Model model, HttpServletRequest request){
+//	@RequestMapping("/tambah")
+//	public String addHeader(Model model, HttpServletRequest request){
+//		List<KaryawanDto> karyawan = kSvc.listAll();
+//		List<MstCustomerDto> customer = cSvc.listAll();
+//		TrHeaderPenjualanDto dto = new TrHeaderPenjualanDto();
+//		model.addAttribute("data", dto);
+//		model.addAttribute("pelanggan", customer);
+//		model.addAttribute("karyawan",karyawan);
+//		return "viewTransaksiHeaderTambah";
+//	}
+	
+	@RequestMapping("/add")
+	public String add(Model model){
 		List<KaryawanDto> karyawan = kSvc.listAll();
 		List<MstCustomerDto> customer = cSvc.listAll();
 		TrHeaderPenjualanDto dto = new TrHeaderPenjualanDto();
 		model.addAttribute("data", dto);
 		model.addAttribute("pelanggan", customer);
 		model.addAttribute("karyawan",karyawan);
-		return "viewTransaksiHeaderTambah";
+		return "transaksi_add";
 	}
 
 
-	@RequestMapping("/simpanheader/proses")
+	@RequestMapping(value = "/submitTransaksi", method = RequestMethod.POST)
 	public String tambahProsesHeader(@Valid @ModelAttribute("data") TrHeaderPenjualanDto dto,
 			 BindingResult result){
 		if(result.hasErrors()){
-			 return "transaksi/tambah";
+			 return "transaksi/add";
 		 }else{
+		
 			 svc.saveHeader(dto);
-			 return "redirect:/transaksi/detail/tambah/" + dto.getNoNota();
+			 return "redirect:/transaksi/detail/" + dto.getNoNota();
 		 }
+	}
+	
+	@RequestMapping(value = "/submitDetail", method = RequestMethod.POST)
+	public String tambahDetail(@Valid @ModelAttribute("detail") TrDetailPenjualanDto dto,
+			BindingResult result){
+		if(result.hasErrors()){
+			return "redirect:/transaksi/detail/"+dto.getNoNota();
+		}else{
+			
+			svc.saveDetail(dto);
+			return "redirect:/transaksi/detail/" + dto.getNoNota();
+		}
 	}
 	
 }

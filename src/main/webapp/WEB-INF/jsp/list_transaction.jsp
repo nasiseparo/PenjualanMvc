@@ -69,7 +69,7 @@
 											<td>${p.hargaTotal}</td>
 											<td>${p.namaCustomer}</td>
 											<td>${p.namaKaryawan}</td>
-											<td><a class="btn btn-warning" href="">Detail</a>&nbsp <a
+											<td><a class="btn btn-warning" href="${pageContext.request.contextPath}/transaksi/detail/${p.noNota}">Detail</a>&nbsp <a
 												class="btn btn-danger"
 												href="${pageContext.request.contextPath}">Delete</a></td>
 										</tr>

@@ -14,13 +14,15 @@ public class TrHeaderPenjualanDto {
 	private String displayHargaTotal;
 	private String kodeCustomer;
 	private String kodeKaryawan;
+	private List<TrDetailPenjualanDto> detail;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@NotNull(message = "Silakan isi tanggal transaksi")
 	private Date tanggalTransaksi;
 	private String namaCustomer;
 	private String namaKaryawan;
-	private List<TrDetailPenjualanDto> detail;
+	
+	
 	public String getNoNota() {
 		return noNota;
 	}

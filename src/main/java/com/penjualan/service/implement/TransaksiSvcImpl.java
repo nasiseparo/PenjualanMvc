@@ -69,47 +69,59 @@ public class TransaksiSvcImpl implements TransaksiSvc {
 			MstCustomer customer = (MstCustomer) l[1];
 			MstKaryawan karyawan = (MstKaryawan) l[2];
 
-			transaksiHeaderDto.setDetail(this.listTransaksiDetailByNoNota(header.getNoNota()));
+			transaksiHeaderDto.setDetail(this
+					.listTransaksiDetailByNoNota(header.getNoNota()));
 			transaksiHeaderDto.setGlobalDiskon(header.getGlobalDiskon());
 			transaksiHeaderDto.setHargaTotal(header.getHargaTotal());
-			transaksiHeaderDto.setDisplayHargaTotal(helper.formatCurrency(header.getHargaTotal()));
+			transaksiHeaderDto.setDisplayHargaTotal(helper
+					.formatCurrency(header.getHargaTotal()));
 			transaksiHeaderDto.setKodeCustomer(customer.getKodeCustomer());
 			transaksiHeaderDto.setKodeKaryawan(karyawan.getKodeKaryawan());
 			transaksiHeaderDto.setNamaCustomer(customer.getNamaCustomer());
 			transaksiHeaderDto.setNamaKaryawan(karyawan.getNamaKaryawan());
 			transaksiHeaderDto.setNoNota(header.getNoNota());
-			transaksiHeaderDto.setTanggalTransaksi(header.getTanggalTransaksi());
+			transaksiHeaderDto
+					.setTanggalTransaksi(header.getTanggalTransaksi());
 
 			transaksiHeaderDtos.add(transaksiHeaderDto);
 
 		}
 
 		return transaksiHeaderDtos;
+
 	}
 
 	@Override
 	public TrHeaderPenjualanDto listTransaksiHeader(String noNota) {
 		List<Object[]> list = headerDao.listTransaksiHeader(noNota);
-		TrHeaderPenjualanDto transaksiHeaderDto = new TrHeaderPenjualanDto();
-		for (Object[] l : list) {
-			TrHeaderPenjualan header = (TrHeaderPenjualan) l[0];
-			MstCustomer customer = (MstCustomer) l[1];
-			MstKaryawan karyawan = (MstKaryawan) l[2];
 
-			transaksiHeaderDto.setDetail(this.listTransaksiDetailByNoNota(header.getNoNota()));
-			transaksiHeaderDto.setGlobalDiskon(header.getGlobalDiskon());
-			transaksiHeaderDto.setHargaTotal(header.getHargaTotal());
-			transaksiHeaderDto.setDisplayHargaTotal(helper.formatCurrency(header.getHargaTotal()));
-			transaksiHeaderDto.setKodeCustomer(customer.getKodeCustomer());
-			transaksiHeaderDto.setKodeKaryawan(karyawan.getKodeKaryawan());
-			transaksiHeaderDto.setNamaCustomer(customer.getNamaCustomer());
-			transaksiHeaderDto.setNamaKaryawan(karyawan.getNamaKaryawan());
-			transaksiHeaderDto.setNoNota(header.getNoNota());
-			transaksiHeaderDto.setTanggalTransaksi(header.getTanggalTransaksi());
+		if (list.isEmpty()) {
+			return null;
+		} else {
+			TrHeaderPenjualanDto transaksiHeaderDto = new TrHeaderPenjualanDto();
+			for (Object[] l : list) {
+				TrHeaderPenjualan header = (TrHeaderPenjualan) l[0];
+				MstCustomer customer = (MstCustomer) l[1];
+				MstKaryawan karyawan = (MstKaryawan) l[2];
 
+				transaksiHeaderDto.setDetail(this
+						.listTransaksiDetailByNoNota(header.getNoNota()));
+				transaksiHeaderDto.setGlobalDiskon(header.getGlobalDiskon());
+				transaksiHeaderDto.setHargaTotal(header.getHargaTotal());
+				transaksiHeaderDto.setDisplayHargaTotal(helper
+						.formatCurrency(header.getHargaTotal()));
+				transaksiHeaderDto.setKodeCustomer(customer.getKodeCustomer());
+				transaksiHeaderDto.setKodeKaryawan(karyawan.getKodeKaryawan());
+				transaksiHeaderDto.setNamaCustomer(customer.getNamaCustomer());
+				transaksiHeaderDto.setNamaKaryawan(karyawan.getNamaKaryawan());
+				transaksiHeaderDto.setNoNota(header.getNoNota());
+				transaksiHeaderDto.setTanggalTransaksi(header
+						.getTanggalTransaksi());
+
+			}
+			return transaksiHeaderDto;
 		}
 
-		return transaksiHeaderDto;
 	}
 
 	@Override

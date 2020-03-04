@@ -42,4 +42,21 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			//load();
+			function load() {
+				$('#tblDetailTransaksi').DataTable();
+			}
+
+			var options = {
+				format : 'dd/mm/yyyy',
+				todayHighlight : true,
+				autoclose : true,
+			};
+
+			$('.datepicker').datepicker(options);
+		})
+	</script>
+
 </html>

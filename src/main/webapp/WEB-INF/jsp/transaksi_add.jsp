@@ -2,6 +2,8 @@
 <%@include file="/WEB-INF/jsp/include/header.jsp"%>
 <%@include file="/WEB-INF/jsp/include/sidebar.jsp"%>
 
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 
 
 
@@ -34,47 +36,54 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form role="form"
+						<form:form modelAttribute="data"
 							action="${pageContext.request.contextPath}/transaksi/submitTransaksi"
 							method="post">
 							<div class="card-body">
 								<div class="form-group">
+									<label for="noNota">No Nota</label>
+									<form:input path="noNota" type="text" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label>Tanggal Transaksi : </label>
+									<form:input path="tanggalTransaksi"
+										class="form-control datepicker" />
+								</div>
+								<div class="form-group">
+									<label for="globalDiskon">Global Diskon</label>
+									<form:input path="globalDiskon" type="text"
+										class="form-control" onkeypress="return hanyaAngka(event)" />
+								</div>
 
-									<label for="noNota">No Nota</label> <input type="text"
-										class="form-control" id="noNota"
-										placeholder="No Nota" name="noNota">
-								</div>
-								
-								<div class="form-group">
-
-									<label for="tanggalTransaksi">Tanggal Transaksi</label> <input type="text"
-										class="form-control" id="tanggalTransaksi"
-										placeholder="Tanggal Transaksi" name="tanggalTransaksi">
-								</div>
+								<form:input path="hargaTotal" type="hidden" class="form-control" />
 
 								<div class="form-group">
-									<label for="hargaTotal">Harga Total</label> <input type="text"
-										class="form-control" id="hargaTotal" placeholder="Harga Total"
-										name="hargaTotal">
+									<label for="pelanggan">Pelanggan</label>
+									<form:select path="kodeCustomer" class="form-control">
+										<option value="">-Pilih Pelanggan</option>
+										<c:forEach items="${pelanggan}" var="p">
+											<option value="${p.getKodeCustomer()}">${p.getNamaCustomer()}</option>
+										</c:forEach>
+									</form:select>
 								</div>
 								<div class="form-group">
-									<label for="customer">Customer</label> <input
-										type="text" class="form-control" id="customer"
-										placeholder="Customer" name=customer>
+									<label for="karyawan">Karyawan</label>
+									<form:select path="kodeKaryawan" class="form-control">
+										<option value="">-Pilih Pelanggan</option>
+										<c:forEach items="${karyawan}" var="k">
+											<option value="${k.getKodeKaryawan()}">${k.getNamaKaryawan()}</option>
+										</c:forEach>
+									</form:select>
 								</div>
-								<div class="form-group">
-									<label for="karyawan">Karyawan</label> <input
-										type="text" class="form-control" id="karyawan"
-										placeholder="Karyawan" name="karyawan">
+								<div class="box-footer">
+									<button type="submit" class="btn btn-primary">Submit</button>
+									<a href="${pageContext.request.contextPath}/transaksi/list"></a>
+									<a type="button" class="btn btn-warning" href="${pageContext.request.contextPath}/transaksi/list">Kembali</a>
+									
 								</div>
-								
 							</div>
-							<!-- /.card-body -->
+						</form:form>
 
-							<div class="card-footer">
-								<button type="submit" class="btn btn-primary">Submit</button>
-							</div>
-						</form>
 					</div>
 					<!-- /.card-body -->
 
@@ -84,10 +93,10 @@
 
 
 		</div>
-</div>
-<!-- /.container-fluid -->
-</section>
-<!-- /.content -->
+
+		<!-- /.container-fluid -->
+	</section>
+	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 <%@include file="/WEB-INF/jsp/include/footer.jsp"%>

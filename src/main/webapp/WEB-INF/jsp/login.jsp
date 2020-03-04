@@ -1,118 +1,218 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta charset="utf-8">
-<link href="<c:url value='/resources/css/bootstrap.min.css' />"
-	rel="stylesheet">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>AdminLTE 3 | Dashboard</title>
-<!-- Tell the browser to be responsive to screen width -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Font Awesome -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/plugins/fontawesome-free/css/all.min.css'/>">
-<!-- Ionicons -->
-<link rel="stylesheet"
-	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-<!-- Tempusdominus Bbootstrap 4 -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'/>">
-<!-- iCheck -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css'/>">
-<!-- JQVMap -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/plugins/jqvmap/jqvmap.min.css'/>">
-<!-- Theme style -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/dist/css/adminlte.min.css'/>">
-<!-- overlayScrollbars -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'/>">
-<!-- Daterange picker -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/plugins/daterangepicker/daterangepicker.css'/>">
-<!-- summernote -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/plugins/summernote/summernote-bs4.css'/>">
-<!-- Google Font: Source Sans Pro -->
-<link
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
-	rel="stylesheet">
 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script
+	src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script"
+	rel="stylesheet">
+<link
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	crossorigin="anonymous">
+
+<title>Login Page</title>
+
+<style type="text/css">
+:root { -
+	-input-padding-x: 1.5rem; -
+	-input-padding-y: .75rem;
+}
+
+body {
+	background: #007bff;
+	background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+
+.card-signin {
+	border: 0;
+	border-radius: 1rem;
+	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-signin .card-title {
+	margin-bottom: 2rem;
+	font-weight: 300;
+	font-size: 1.5rem;
+}
+
+.card-signin .card-body {
+	padding: 2rem;
+}
+
+.form-signin {
+	width: 100%;
+}
+
+.form-signin .btn {
+	font-size: 80%;
+	border-radius: 5rem;
+	letter-spacing: .1rem;
+	font-weight: bold;
+	padding: 1rem;
+	transition: all 0.2s;
+}
+
+.form-label-group {
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.form-label-group input {
+	height: auto;
+	border-radius: 2rem;
+}
+
+.form-label-group>input,.form-label-group>label {
+	padding: var(- -input-padding-y) var(- -input-padding-x);
+}
+
+.form-label-group>label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	margin-bottom: 0;
+	/* Override default `<label>` margin */
+	line-height: 1.5;
+	color: #495057;
+	border: 1px solid transparent;
+	border-radius: .25rem;
+	transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+	color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+	color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+	color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+	color: transparent;
+}
+
+.form-label-group input::placeholder {
+	color: transparent;
+}
+
+.form-label-groupinput:not(:placeholder-shown){
+padding-top:calc(var(--input-padding-y)+var(--input-padding-y)*(2/3));
+padding-bottom:calc(
+var(--input-padding-y)/3);
+}
+.form-label-group input:not (:placeholder-shown )~label {
+	padding-top: calc(var(- -input-padding-y)/3);
+	padding-bottom: calc(var(- -input-padding-y)/3);
+	font-size: 12px;
+	color: #777;
+}
+
+.btn-google {
+	color: white;
+	background-color: #ea4335;
+}
+
+.btn-facebook {
+	color: white;
+	background-color: #3b5998;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@
+supports (-ms-ime-align: auto ) { .form-label-group>label {
+	display: none;
+}
+
+.form-label-group input::-ms-input-placeholder {
+	color: #777;
+}
+
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none) , ( -ms-high-contrast : active)
+	{
+	.form-label-group>label {
+		display: none;
+	}
+	.form-label-group input:-ms-input-placeholder {
+		color: #777;
+	}
+}
+</style>
 </head>
 <body>
-	<div class="wrapper">
-		<div class="container">
-			<div class="row">
-				
-					<div class="center">
 
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-8">
-									<div class="card card-info">
-										<div class="card-header">
-											<h3 class="card-title">Login</h3>
-										</div>
-										<!-- /.card-header -->
-										<!-- form start -->
-										<form class="form-horizontal">
-											<div class="card-body">
-												<div class="form-group row">
-													<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-													<div class="col-sm-10">
-														<input type="email" class="form-control" id="inputEmail3"
-															placeholder="Email">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-													<div class="col-sm-10">
-														<input type="password" class="form-control"
-															id="inputPassword3" placeholder="Password">
-													</div>
-												</div>
-												<div class="form-group row">
-													<div class="offset-sm-2 col-sm-10">
-														<div class="form-check">
-															<input type="checkbox" class="form-check-input"
-																id="exampleCheck2"> <label
-																class="form-check-label" for="exampleCheck2">Remember
-																me</label>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- /.card-body -->
-											<div class="card-footer">
-												<button type="submit" class="btn btn-info">Sign in</button>
-												<button type="submit" class="btn btn-default float-right">Cancel</button>
-											</div>
-											<!-- /.card-footer -->
-										</form>
-									</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+				<div class="card card-signin my-5">
+					<div class="card-body">
+						<h5 class="card-title text-center">Sign In</h5>
+
+						<form:form class="form-signin" method="post"
+							action="${pageContext.request.contextPath}/login/check-user"
+							modelAttribute="karyawanLogin">
+							<label>Username</label>
+							<div class="form-label-group">
+								<form:input path="username" class="form-control"
+									placeholder="Username" /></div>
+
+							
+								<label>Password</label>
+								
+								<div class="form-label-group">
+									<form:password placeholder="Password" path="password"
+										class="form-control" />
+
 								</div>
-							</div>
-						</div>
-						<!-- /.container-fluid -->
 
+								<div class="custom-control custom-checkbox mb-3">
+
+									<input type="checkbox" class="custom-control-input"
+										id="customCheck1"> <label class="custom-control-label"
+										for="customCheck1">Remember password</label>
+								</div>
+								<input class="btn btn-lg btn-primary btn-block text-uppercase"
+									type="submit" value="Sign in">
+
+								<hr class="my-4">
+								<button class="btn btn-lg btn-google btn-block text-uppercase"
+									type="submit">
+									<i class="fab fa-google mr-2"></i> Sign in with Google
+								</button>
+								<button class="btn btn-lg btn-facebook btn-block text-uppercase"
+									type="submit">
+									<i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook
+								</button>
+						</form:form>
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<style>
-.center {
-	margin: auto;
-	width: 60%;
-	padding: 10px;
-}
-</style>
+</body>
+</html>

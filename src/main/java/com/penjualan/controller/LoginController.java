@@ -31,7 +31,10 @@ public class LoginController {
 		KaryawanDto findUser = svc.getKaryawanByUsername(dto.getUsername());
 		if(findUser != null) {
 			if (dto.getPassword().equals(findUser.getPassword())) {
+				session.setAttribute("sesilogin", dto.getUsername());
+				session.setAttribute("kodeKaryawan", dto.getKodeKaryawan());
 				session.setAttribute("OK", findUser);
+				
 				return "redirect:/home";
 			} else {
 				model.addAttribute("pesan", "login gagal");
