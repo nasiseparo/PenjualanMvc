@@ -96,13 +96,11 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>No Nota</th>
-										<th>Tanggal Transaksi</th>
-										<th>Harga Total</th>
-										<th>Customer</th>
-										<th>Karyawan</th>
-										<th>Action</th>
-
+										<th>Kode Detail</th>
+										<th>Barang</th>
+										<th>Qty</th>
+										<th>Harga Satuan</th>
+										<th>Sub Total</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -113,9 +111,6 @@
 										<td>10000</td>
 										<td>Adi</td>
 										<td>Adi</td>
-										<td><a class="btn btn-warning" href="">Detail</a>&nbsp <a
-											class="btn btn-danger"
-											href="${pageContext.request.contextPath}">Delete</a></td>
 									</tr>
 
 								</tbody>
